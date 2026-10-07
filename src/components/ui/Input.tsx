@@ -11,7 +11,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, success, helperText, className, type = "text", disabled, ...props }, ref) => {
+  ({ label, error, success, helperText, className, type = "text", disabled, onFocus, onBlur, ...props }, ref) => {
     const [isFocused, setIsFocused] = useState(false);
     const hasError = !!error;
     const hasSuccess = !!success;
@@ -29,7 +29,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex flex-col gap-2">
         {label && (
-          <label className="text-label font-medium text-text-secondary">
+          <label htmlFor={props.id} className="text-label font-medium text-text-secondary">
             {label}
           </label>
         )}
@@ -39,8 +39,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             className={cn(baseStyles, stateStyles, className)}
             ref={ref}
             disabled={disabled}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
+            onFocus={(e) => {
+              setIsFocused(true);
+              onFocus?.(e);
+            }}
+            onBlur={(e) => {
+              setIsFocused(false);
+              onBlur?.(e);
+            }}
             aria-invalid={hasError}
             aria-describedby={error ? `${props.id}-error` : helperText ? `${props.id}-helper` : undefined}
             {...props}

@@ -50,21 +50,6 @@ const config: Config = {
           danger: '#EF4444',
         },
       },
-      spacing: {
-        '4': '4px',
-        '8': '8px',
-        '12': '12px',
-        '16': '16px',
-        '20': '20px',
-        '24': '24px',
-        '32': '32px',
-        '40': '40px',
-        '48': '48px',
-        '64': '64px',
-        '80': '80px',
-        '96': '96px',
-        '120': '120px',
-      },
       borderRadius: {
         'sm': '4px',
         'md': '8px',
@@ -74,6 +59,96 @@ const config: Config = {
       fontFamily: {
         heading: ['var(--font-space-grotesk)', 'sans-serif'],
         body: ['var(--font-inter)', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-space-grotesk)', 'sans-serif'],
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translate3d(0,0,0)' },
+          '50%': { transform: 'translate3d(0,-14px,0)' },
+        },
+        sway: {
+          '0%, 100%': { transform: 'rotateY(-5deg) rotateX(1deg)' },
+          '50%': { transform: 'rotateY(5deg) rotateX(-1deg)' },
+        },
+        rise: {
+          from: { opacity: '0', transform: 'translate3d(0,28px,0)' },
+          to: { opacity: '1', transform: 'translate3d(0,0,0)' },
+        },
+        marquee: {
+          from: { transform: 'translate3d(0,0,0)' },
+          to: { transform: 'translate3d(-50%,0,0)' },
+        },
+        'marquee-reverse': {
+          from: { transform: 'translate3d(-50%,0,0)' },
+          to: { transform: 'translate3d(0,0,0)' },
+        },
+        'spin-slow': {
+          to: { transform: 'rotate(360deg)' },
+        },
+        'ping-soft': {
+          '0%': { transform: 'scale(1)', opacity: '0.7' },
+          '80%, 100%': { transform: 'scale(2.6)', opacity: '0' },
+        },
+        sweep: {
+          from: { transform: 'translate3d(-130%,0,0) skewX(-20deg)' },
+          to: { transform: 'translate3d(260%,0,0) skewX(-20deg)' },
+        },
+        shine: {
+          from: { backgroundPosition: '100% 0' },
+          to: { backgroundPosition: '0% 0' },
+        },
+        tick: {
+          from: { opacity: '0', transform: 'translate3d(0,-35%,0)' },
+          to: { opacity: '1', transform: 'translate3d(0,0,0)' },
+        },
+        drift: {
+          '0%, 100%': { transform: 'translate3d(0,0,0) scale(1)' },
+          '50%': { transform: 'translate3d(4vw,3vh,0) scale(1.08)' },
+        },
+        'grid-flow': {
+          from: { transform: 'translate3d(0,0,0)' },
+          to: { transform: 'translate3d(0,64px,0)' },
+        },
+        'cue': {
+          '0%, 100%': { transform: 'translate3d(0,0,0)', opacity: '1' },
+          '60%': { transform: 'translate3d(0,8px,0)', opacity: '0.2' },
+        },
+        burst: {
+          from: { opacity: '1', transform: 'translate3d(0,0,0) scale(1)' },
+          to: { opacity: '0', transform: 'translate3d(var(--tx),var(--ty),0) scale(0.4)' },
+        },
+        'bar-fill': {
+          from: { transform: 'scaleX(0)' },
+          to: { transform: 'scaleX(1)' },
+        },
+        'intro-logo': {
+          '0%': { opacity: '0', transform: 'scale(0.82)', filter: 'blur(8px)' },
+          '40%, 80%': { opacity: '1', transform: 'scale(1)', filter: 'blur(0)' },
+          '100%': { opacity: '0', transform: 'scale(1.08)', filter: 'blur(4px)' },
+        },
+        'intro-out': {
+          '0%, 1%': { clipPath: 'inset(0 0 0 0)', visibility: 'visible' },
+          '100%': { clipPath: 'inset(0 0 100% 0)', visibility: 'hidden' },
+        },
+      },
+      animation: {
+        float: 'float 6s ease-in-out infinite',
+        sway: 'sway 9s ease-in-out infinite',
+        rise: 'rise 0.9s cubic-bezier(0.22,1,0.36,1) both',
+        marquee: 'marquee 38s linear infinite',
+        'marquee-reverse': 'marquee-reverse 46s linear infinite',
+        'spin-slow': 'spin-slow 48s linear infinite',
+        'ping-soft': 'ping-soft 2s cubic-bezier(0,0,0.2,1) infinite',
+        sweep: 'sweep 1.1s ease-out both',
+        shine: 'shine 1.6s ease-out both',
+        tick: 'tick 0.35s ease-out both',
+        drift: 'drift 22s ease-in-out infinite',
+        'grid-flow': 'grid-flow 2.4s linear infinite',
+        cue: 'cue 1.8s ease-in-out infinite',
+        burst: 'burst 1.1s cubic-bezier(0.16,1,0.3,1) both',
+        'bar-fill': 'bar-fill 1.2s cubic-bezier(0.65,0,0.35,1) both',
+        'intro-logo': 'intro-logo 1.6s cubic-bezier(0.22,1,0.36,1) both',
+        'intro-out': 'intro-out 0.75s cubic-bezier(0.76,0,0.24,1) 1.55s forwards',
       },
       fontSize: {
         'display': ['clamp(2.5rem, 5vw, 4rem)', { lineHeight: '1.1', fontWeight: '700' }],

@@ -1,143 +1,68 @@
-import Link from "next/link";
+import { siteConfig } from "@/config/site";
 import Logo from "@/components/common/Logo";
+import Icon from "@/components/common/Icon";
 import Container from "./Container";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const platformLinks = [
-    { href: "/competitions", label: "Competitions" },
-    { href: "/games", label: "Games" },
-    { href: "/leaderboard", label: "Leaderboard" },
-    { href: "/how-it-works", label: "How It Works" },
-  ];
-
-  const companyLinks = [
-    { href: "/about", label: "About" },
-    { href: "/news", label: "News" },
-    { href: "/contact", label: "Contact" },
-  ];
-
-  const legalLinks = [
-    { href: "/terms", label: "Terms" },
-    { href: "/privacy", label: "Privacy" },
-    { href: "/rules", label: "Rules" },
-  ];
-
-  const socialLinks = [
-    { href: "#", label: "Discord", icon: "💬" },
-    { href: "#", label: "Instagram", icon: "📷" },
-    { href: "#", label: "TikTok", icon: "🎵" },
-    { href: "#", label: "YouTube", icon: "▶️" },
-    { href: "#", label: "X", icon: "𝕏" },
-  ];
-
   return (
-    <footer className="relative bg-surface-100 border-t border-border mt-auto">
-      {/* Subtle gradient glow */}
-      <div className="absolute inset-0 bg-gradient-brand opacity-5 pointer-events-none" />
-
+    <footer className="relative z-10 border-t border-white/10 bg-surface-100/80">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-lime/60 to-transparent" />
       <Container>
-        <div className="py-16 md:py-20">
-          {/* Brand Section */}
-          <div className="mb-12 md:mb-16">
-            <Link href="/" className="inline-block mb-4">
+        <div className="grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <a href="#top" aria-label="Back to top" className="inline-block">
               <Logo size="lg" />
-            </Link>
-            <p className="text-h3 font-heading text-text-secondary mb-2">
-              COMPETE. CONNECT. CONQUER.
-            </p>
-            <p className="text-body text-text-muted max-w-md">
-              Discover competitive tournaments, build your squad, and prove yourself on the biggest stage.
-            </p>
+            </a>
+            <p className="mt-5 font-display text-2xl font-bold uppercase tracking-wide text-text-secondary">Compete. Connect. Conquer.</p>
+            <p className="mt-3 max-w-sm text-text-muted">{siteConfig.description}</p>
           </div>
 
-          {/* Links Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12">
-            {/* Platform */}
-            <div>
-              <h3 className="text-label font-medium text-text-primary mb-4 uppercase tracking-wider">
-                Platform
-              </h3>
-              <ul className="space-y-3">
-                {platformLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-body text-text-muted hover:text-lime transition-colors duration-fast"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <nav aria-label="Footer">
+            <h3 className="mb-5 font-heading text-xs font-semibold uppercase tracking-[0.25em] text-white">Explore</h3>
+            <ul className="space-y-3">
+              {siteConfig.nav.map((item) => (
+                <li key={item.id}>
+                  <a href={item.href} className="text-text-muted transition-colors hover:text-lime">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            {/* Company */}
-            <div>
-              <h3 className="text-label font-medium text-text-primary mb-4 uppercase tracking-wider">
-                Company
-              </h3>
-              <ul className="space-y-3">
-                {companyLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-body text-text-muted hover:text-lime transition-colors duration-fast"
+          <div>
+            <h3 className="mb-5 font-heading text-xs font-semibold uppercase tracking-[0.25em] text-white">Follow the drop</h3>
+            <ul className="flex flex-wrap gap-2">
+              {siteConfig.socials.map((s) => (
+                <li key={s.label}>
+                  {s.href ? (
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-[40px] items-center gap-1.5 border border-white/10 px-3.5 text-sm text-text-secondary transition-colors hover:border-lime hover:text-lime"
                     >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Legal */}
-            <div>
-              <h3 className="text-label font-medium text-text-primary mb-4 uppercase tracking-wider">
-                Legal
-              </h3>
-              <ul className="space-y-3">
-                {legalLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-body text-text-muted hover:text-lime transition-colors duration-fast"
+                      {s.label}
+                      <Icon name="arrowUpRight" className="h-3.5 w-3.5" />
+                    </a>
+                  ) : (
+                    <span
+                      title="Coming soon"
+                      className="inline-flex min-h-[40px] cursor-default items-center gap-2 border border-dashed border-white/10 px-3.5 text-sm text-text-disabled"
                     >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Social */}
-            <div>
-              <h3 className="text-label font-medium text-text-primary mb-4 uppercase tracking-wider">
-                Social
-              </h3>
-              <ul className="space-y-3">
-                {socialLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-body text-text-muted hover:text-lime transition-colors duration-fast flex items-center gap-2"
-                    >
-                      <span>{link.icon}</span>
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                      {s.label}
+                      <span className="text-[9px] font-semibold uppercase tracking-widest text-lime/60">Soon</span>
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
+        </div>
 
-          {/* Bottom Bar */}
-          <div className="pt-8 border-t border-border">
-            <p className="text-caption text-text-muted text-center">
-              © {currentYear} KYNEKS. All rights reserved.
-            </p>
-          </div>
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-white/10 py-6 text-xs text-text-muted sm:flex-row">
+          <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+          <p className="font-heading uppercase tracking-[0.3em]">{siteConfig.tagline}</p>
         </div>
       </Container>
     </footer>
