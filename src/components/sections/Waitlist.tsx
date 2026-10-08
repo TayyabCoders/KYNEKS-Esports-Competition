@@ -35,7 +35,7 @@ export default function Waitlist() {
                 <div>
                   <p className="mb-4 flex items-center gap-3 font-heading text-xs font-semibold uppercase tracking-[0.3em] text-lime">
                     <span className="h-px w-8 bg-lime" aria-hidden="true" />
-                    Early access
+                    Pre registration
                   </p>
                   <h2 className="font-display text-6xl font-extrabold uppercase leading-[0.85] tracking-tight sm:text-7xl lg:text-8xl">
                     Ready to

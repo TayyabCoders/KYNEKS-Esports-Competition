@@ -4,6 +4,7 @@ import Features from "@/components/sections/Features";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Squad from "@/components/sections/Squad";
 import Waitlist from "@/components/sections/Waitlist";
+import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       <Features />
       <HowItWorks />
       <Squad />
-      <Waitlist />
+      {/* <Waitlist /> */}
+      <Contact />
     </>
   );
 }

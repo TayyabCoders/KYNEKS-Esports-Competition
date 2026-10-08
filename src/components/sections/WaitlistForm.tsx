@@ -156,7 +156,7 @@ export default function WaitlistForm() {
       )}
 
       <Button type="submit" size="lg" isLoading={busy} className="w-full">
-        {status === "error" ? "Try again" : "Get early access"}
+        {status === "error" ? "Try again" : "Pre Registration"}
         <Icon name="arrowRight" className="h-5 w-5" />
       </Button>
       <p className="text-center text-xs text-text-disabled">No spam. One email when registrations open.</p>

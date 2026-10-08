@@ -94,7 +94,7 @@ export default function MobileMenu({ isOpen, onClose, active }: MobileMenuProps)
           style={{ transitionDelay: isOpen ? "600ms" : "0ms" }}
         >
           <a href="#join" onClick={onClose} className={buttonStyles({ size: "lg", className: "w-full" })}>
-            Get early access
+            Pre Registration
             <Icon name="arrowRight" className="h-5 w-5" />
           </a>
           <p className="mt-4 text-center font-heading text-[11px] uppercase tracking-[0.3em] text-white/40">{siteConfig.tagline}</p>

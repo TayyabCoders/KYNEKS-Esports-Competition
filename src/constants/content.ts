@@ -1,4 +1,4 @@
-﻿import type { IconName } from "@/components/common/Icon";
+import type { IconName } from "@/components/common/Icon";
 
 export interface Feature {
   icon: IconName;
@@ -62,7 +62,7 @@ export const features: Feature[] = [
     icon: "gem",
     kicker: "Prizes",
     title: "Play for the pool",
-    text: "Prize pool details drop with registration. Early access members hear first.",
+    text: "Prize pool details drop with registration. Pre-registered members hear first.",
   },
 ];
 

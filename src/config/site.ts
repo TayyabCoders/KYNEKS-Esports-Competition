@@ -10,7 +10,8 @@ export const siteConfig = {
     { href: "#features", id: "features", label: "What's Coming" },
     { href: "#how", id: "how", label: "How It Works" },
     { href: "#squad", id: "squad", label: "Players" },
-    { href: "#join", id: "join", label: "Early Access" },
+    { href: "#join", id: "join", label: "Pre Registration" },
+    { href: "#contact", id: "contact", label: "Contact" },
   ],
   // Add real URLs here; entries without an href render as "soon" chips.
   socials: [

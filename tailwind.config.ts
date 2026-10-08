@@ -121,6 +121,10 @@ const config: Config = {
           from: { transform: 'scaleX(0)' },
           to: { transform: 'scaleX(1)' },
         },
+        'step-in': {
+          from: { opacity: '0', transform: 'translate3d(var(--dir, 24px),0,0)' },
+          to: { opacity: '1', transform: 'translate3d(0,0,0)' },
+        },
         'intro-logo': {
           '0%': { opacity: '0', transform: 'scale(0.82)', filter: 'blur(8px)' },
           '40%, 80%': { opacity: '1', transform: 'scale(1)', filter: 'blur(0)' },
@@ -147,6 +151,7 @@ const config: Config = {
         cue: 'cue 1.8s ease-in-out infinite',
         burst: 'burst 1.1s cubic-bezier(0.16,1,0.3,1) both',
         'bar-fill': 'bar-fill 1.2s cubic-bezier(0.65,0,0.35,1) both',
+        'step-in': 'step-in 0.35s cubic-bezier(0.22,1,0.36,1) both',
         'intro-logo': 'intro-logo 1.6s cubic-bezier(0.22,1,0.36,1) both',
         'intro-out': 'intro-out 0.75s cubic-bezier(0.76,0,0.24,1) 1.55s forwards',
       },

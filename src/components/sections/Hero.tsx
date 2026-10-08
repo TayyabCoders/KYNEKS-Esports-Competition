@@ -4,6 +4,7 @@ import Container from "@/components/layout/Container";
 import Icon from "@/components/common/Icon";
 import { buttonStyles } from "@/components/ui/Button";
 import Countdown from "./Countdown";
+import RegisterButton from "./RegisterButton";
 import HeroStage from "./HeroStage";
 
 /** Entrance stagger: every hero element waits for the intro curtain, then rises in sequence. */
@@ -71,10 +72,7 @@ export default function Hero() {
             </div>
 
             <div className="mt-9 flex animate-rise flex-col gap-3 sm:flex-row" style={enter(680)}>
-              <a href="#join" className={buttonStyles({ size: "lg" })}>
-                Get early access
-                <Icon name="arrowRight" className="h-5 w-5 transition-transform duration-normal group-hover:translate-x-1" />
-              </a>
+              <RegisterButton />
               <a href="#features" className={buttonStyles({ variant: "outline", size: "lg" })}>
                 See what&apos;s coming
               </a>
