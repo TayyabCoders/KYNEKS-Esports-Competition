@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RegistrationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+/// One squad registration (the "team"). The contact* fields are the IGL's Step 1 details.
+model Registration {
+  id                 String             @id @default(cuid())
+  teamName           String
+  contactName        String
+  contactWhatsapp    String
+  contactEmail       String
+  contactAge         Int
+  contactArea        String
+  agreementsAccepted Boolean
+  status             RegistrationStatus @default(PENDING)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  players Player[]
+  receipt Receipt?
+
+  @@index([status, createdAt])
+  @@index([contactEmail])
+}
+
+/// Slots 1-4. Slot 1 is the IGL (isIgl = true).
+model Player {
+  id             String       @id @default(cuid())
+  registrationId String
+  registration   Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+  slot           Int
+  isIgl          Boolean      @default(false)
+  fullName       String
+  age            Int
+  pubgName       String
+  whatsapp       String
+  area           String
+
+  @@unique([registrationId, slot])
+}
+
+/// Payment slip, stored in Neon Object Storage. One per registration.
+/// fileKey is the source of truth. fileUrl is a signed link that EXPIRES (7 days at creation):
+/// mint a fresh one with GET /api/receipts/[id] or signedUrl(fileKey).
+model Receipt {
+  id             String       @id @default(uuid())
+  registrationId String       @unique
+  registration   Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+  fileKey        String       @unique
+  fileUrl        String
+  fileName       String
+  fileType       String
+  fileSize       Int
+  createdAt      DateTime     @default(now())
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
